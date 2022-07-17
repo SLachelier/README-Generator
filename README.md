@@ -26,7 +26,7 @@
   https://mit-license.org/
 
   ## Tests
-  A test example has been provided here: 
+  A test example has been provided here:
   https://drive.google.com/file/d/1Ez3Ve7snXh5yCGdDUvQgE-ku6sCtlhmS/view
 
   ---
