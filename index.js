@@ -1,19 +1,19 @@
-// TODO: Include packages needed for this application
+// Packages needed for this application:
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
 const fs = require('fs');
 const path = require('path')
-// TODO: Create an array of questions for user input
+// An array that holds questions for user input
 const questions = [
     {
         type: 'input',
         name: 'title',
         message: 'What is the name of the project that this README will be for? (Required)',
-        validate: title => {
+        validate: title => { //checks for entry
             if (title) {
                 return true;
             } else {
-                console.log('Please enter the name of your project!');
+                console.log('Please enter the name of your project!'); //displays if nothing is entered.
                 return false;
             }
         }
@@ -74,6 +74,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Please specify the license being used for your project:',
+        //An array of choices the user can choose from.
         choices: ['The Unlicense', 'Boost Software License 1.0', 'MIT License', 'Apache License 2.0', 'Mozilla Public License 2.0', 'GNU LGPLv3', 'GNU GPLv3', 'GNU AGPLv3']
     },
     {
@@ -117,18 +118,18 @@ const questions = [
     }
 ];
 
-// TODO: Create a function to write README file
+// Writes the README file
 function writeToFile(fileName, data) {
-    return fs.writeFileSync(path.join(process.cwd(), fileName), data)
+    return fs.writeFileSync(path.join('Generated_README', fileName), data)
 }
 
-// TODO: Create a function to initialize app
-function init() {
+
+function init() { //Calls writeToFile() and initializes the app.
     inquirer.prompt(questions).then((answers)=>{
     console.log(answers)
     writeToFile('README.md', generateMarkdown(answers));
     });
 }
 
-// Function call to initialize app
+// Function call to initialize the app
 init();
